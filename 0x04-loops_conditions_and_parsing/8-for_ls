@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Display Current Directory Content
+
+for filename in *;
+do
+	echo "$filename" | cut -d'-' -f2
+done
