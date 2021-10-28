@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# this is a very cool comment to this code
+
+i=10
+until [ $i -lt 1 ]
+do
+	echo "Best School"
+	((i=i-1))
+done
