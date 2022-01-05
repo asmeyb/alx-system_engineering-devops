@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-# Installing nginx on ubuntu server 20.04
+# installs nginx and configure it to listen on port 80 make it return a page with
+# "Hello World" in it
 
-apt update &&
-apt -y install nginx
-# Firewall port 80
+apt-get update
+apt-get -y install nginx
 ufw allow 'Nginx HTTP'
-# Index file and start
-echo "Hello World!" > /var/www/html/index.html &&
-/etc/init.d/nginx start
+sudo mkdir -p /var/www/html
+chmod -R 755 /var/www
+echo 'Hello World!' > /var/www/html/index.html
+if [ "$(pgrep -c nginx)" -le 0 ]; then
+	service nginx start
+else
+	service nginx restart
+fi
